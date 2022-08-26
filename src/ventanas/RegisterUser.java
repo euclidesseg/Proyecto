@@ -18,7 +18,7 @@ import javax.swing.WindowConstants;
 public class RegisterUser extends javax.swing.JFrame {
 
     int dni;
-    String usuario = Login.user;
+    String nom = Login.nombreUsuario;
     String registrado = Login.nombreUsuario;
 
     public RegisterUser() {
@@ -26,7 +26,7 @@ public class RegisterUser extends javax.swing.JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        this.setTitle("Nuevo usuario - Sesión de " + usuario);
+        this.setTitle("Nuevo usuario - Sesión de " + nom);
 
         ImageIcon fondoInterfaz = new ImageIcon("src/imagenes/wallpaper1.jpg");
         Icon fondo = new ImageIcon(fondoInterfaz.getImage().getScaledInstance(lbl_wallpaper.getWidth(),
@@ -223,7 +223,7 @@ public class RegisterUser extends javax.swing.JFrame {
                                 pst3.setString(5, password);
                                 pst3.setString(6, permisos);
                                 pst3.setString(7, "TRUE");
-                                pst3.setString(8, registrado);
+                                pst3.setString(8, nom);
                                 pst3.executeUpdate();
                                 JOptionPane.showMessageDialog(null,"Registro Exitoso");
                                 cleanText();

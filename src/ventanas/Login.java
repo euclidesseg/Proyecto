@@ -24,7 +24,7 @@ public class Login extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Acceso al sistemas");
+        setTitle("Acceso al sistema");
 
         /*de esta forma agregamos un imagen escalable a un jlabel es decir que modifique su tamaño si el label lo hace*/
         ImageIcon wallpaper = new ImageIcon("src/imagenes/zyro-image.png");

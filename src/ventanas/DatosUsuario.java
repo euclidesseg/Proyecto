@@ -19,7 +19,7 @@ public class DatosUsuario extends javax.swing.JFrame {
 
     public DatosUsuario() {
         initComponents();
-        this.setTitle("Gestion de usuarios");
+        this.setTitle("Datos del usuario");
         this.setLocationRelativeTo(null);
          this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);

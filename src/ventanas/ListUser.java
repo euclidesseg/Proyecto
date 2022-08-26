@@ -5,12 +5,15 @@
  */
 package ventanas;
 
+import conectarSQL.Conexion;
 import java.sql.*;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import java.awt. event.MouseAdapter;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -24,6 +27,8 @@ public class ListUser extends javax.swing.JFrame {
      */
     public ListUser() {
         initComponents();
+        this.cargarTabla();
+        this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         
         ImageIcon fondoInterfaz = new ImageIcon("src/imagenes/wallpaper1.jpg");
         Icon fondo = new ImageIcon(fondoInterfaz.getImage().getScaledInstance(lbl_wallpaper.getWidth(),
@@ -75,6 +80,7 @@ public class ListUser extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jtable_usuarios.setGridColor(new java.awt.Color(0, 51, 255));
         jtable_usuarios.setSelectionForeground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setViewportView(jtable_usuarios);
 
@@ -124,4 +130,39 @@ public class ListUser extends javax.swing.JFrame {
     private javax.swing.JTable jtable_usuarios;
     private javax.swing.JLabel lbl_wallpaper;
     // End of variables declaration//GEN-END:variables
+
+    //este metodo me cargara la tabla desde la base de datos 
+    private void cargarTabla(){
+        DefaultTableModel modeloTabla = (DefaultTableModel) jtable_usuarios.getModel();
+        jScrollPane1.setViewportView(jtable_usuarios);//de esta forma se hace que la tabla obtenga un scroll en caso de tener bastantes registros
+        modeloTabla.setRowCount(0);//esto se hace para que cada vez que se ingrese un registro o se modifique este se actualice
+        
+        int columnas;
+        
+        try{
+            Conexion cnx = new Conexion();
+            PreparedStatement pst = cnx.getConnection().prepareStatement("SELECT DNI_USUARIO,NOMBRE,APELLIDO,USERNAME,CLAVE,PERMISOS,ESTADO,"
+                    + "REGISTRADO_POR FROM USUARIOS");
+            ResultSet rs = pst.executeQuery();
+            ResultSetMetaData rsmd = rs.getMetaData(); /* esto es para que nos traiga los metadatos
+                                                        * de nuestra consulta y poder determinar cuantas columnas trae esta consulta */
+            columnas = rsmd.getColumnCount();
+                    
+            while(rs.next()){//primer indice es 1
+                /* creamos un vector(arreglo)  de tipo objeto que se llame fila para llenarlo con cada fila que traiga la consulta*/
+                Object[] fila = new Object[columnas];
+                for(int indice = 0; indice < columnas; indice ++){
+                    
+                    //a continuacion llenamos nuestro vector
+                    fila[indice] = rs.getObject(indice +1);  
+                    /* se le esta sumando 1 al indice debido a que el primer indice del ojeto rs
+                     * el cual biene desde la base de datos es 1 */
+                
+                }
+                modeloTabla.addRow(fila);  
+            }
+        }catch(Exception err){
+            JOptionPane.showMessageDialog(null,"Error al cargar la tabla contacte al Administrador");
+        }
+    }
 }

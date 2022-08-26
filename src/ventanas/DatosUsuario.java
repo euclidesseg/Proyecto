@@ -14,15 +14,15 @@ import javax.swing.table.DefaultTableModel;
 import java.sql.*;
 import javax.swing.JOptionPane;
 
-public class gestionUsuarios extends javax.swing.JFrame {
+public class DatosUsuario extends javax.swing.JFrame {
 
 
-    public gestionUsuarios() {
+    public DatosUsuario() {
         initComponents();
         this.setTitle("Gestion de usuarios");
         this.setLocationRelativeTo(null);
+         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        this.cargarTabla();;
 
         ImageIcon fondoInterfaz = new ImageIcon("src/imagenes/wallpaper1.jpg");
         Icon fondo = new ImageIcon(fondoInterfaz.getImage().getScaledInstance(lbl_wallpaper.getWidth(),
@@ -34,8 +34,6 @@ public class gestionUsuarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jtable_usuarios = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         txt_nombre2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -52,47 +50,15 @@ public class gestionUsuarios extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jradio_true = new javax.swing.JRadioButton();
         jradio_false = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        btn_nuevo = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         lbl_wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jtable_usuarios.setBackground(new java.awt.Color(51, 204, 255));
-        jtable_usuarios.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
-        jtable_usuarios.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jtable_usuarios.setForeground(new java.awt.Color(0, 0, 0));
-        jtable_usuarios.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "IDENTIFICACION", "NOMBRE", "APELLIDO", "USUARIO", "CLAVE", "PERMISOS", "ESTADO", "REGISTRADO POR"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jtable_usuarios.setSelectionForeground(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setViewportView(jtable_usuarios);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 960, 560));
 
         jPanel1.setBackground(new java.awt.Color(51, 204, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 16))); // NOI18N
@@ -175,40 +141,41 @@ public class gestionUsuarios extends javax.swing.JFrame {
         jradio_false.setText("FALSE");
         jPanel1.add(jradio_false, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(153, 204, 255));
-        jButton1.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setText("MODIFICAR");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 100, 30));
+        btn_nuevo.setBackground(new java.awt.Color(153, 204, 255));
+        btn_nuevo.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        btn_nuevo.setForeground(new java.awt.Color(0, 0, 0));
+        btn_nuevo.setText("NUEVO USUARIO");
+        btn_nuevo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(btn_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 480, 140, 30));
 
         jButton2.setBackground(new java.awt.Color(153, 204, 255));
         jButton2.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         jButton2.setForeground(new java.awt.Color(0, 0, 0));
         jButton2.setText("ELIMINAR");
         jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 90, 30));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 100, 30));
 
         jButton3.setBackground(new java.awt.Color(153, 204, 255));
         jButton3.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setText("BUSCAR");
         jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, 90, 30));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 420, 100, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 40, 430, 560));
+        jButton4.setBackground(new java.awt.Color(153, 204, 255));
+        jButton4.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(0, 0, 0));
+        jButton4.setText("MODIFICAR");
+        jButton4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 100, 30));
 
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Usuarios");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 30));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 430, 560));
 
         jLabel8.setFont(new java.awt.Font("Arial", 1, 15)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Realizado por Euclides Perez ©");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 630, 250, 20));
-        getContentPane().add(lbl_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1430, 660));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 580, 250, 20));
+        getContentPane().add(lbl_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 610));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -230,42 +197,47 @@ public class gestionUsuarios extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(gestionUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DatosUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(gestionUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DatosUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(gestionUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DatosUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(gestionUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DatosUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new gestionUsuarios().setVisible(true);
+                new DatosUsuario().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_nuevo;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JRadioButton jradio_false;
     private javax.swing.JRadioButton jradio_true;
-    private javax.swing.JTable jtable_usuarios;
     private javax.swing.JLabel lbl_apellido;
     private javax.swing.JLabel lbl_wallpaper;
     private javax.swing.JTextField txt_nombre1;
@@ -275,32 +247,5 @@ public class gestionUsuarios extends javax.swing.JFrame {
     private javax.swing.JTextField txt_nombre7;
     // End of variables declaration//GEN-END:variables
     
-    private void cargarTabla(){
-        DefaultTableModel modeloTabla = (DefaultTableModel) jtable_usuarios.getModel();
-        modeloTabla.setRowCount(0);//esto se hace para que cada vez que se ingrese un registro o se modifique este se actualice
-        
-        int columnas;
-        
-        try{
-            Conexion cnx = new Conexion();
-            PreparedStatement pst = cnx.getConnection().prepareStatement("SELECT DNI_USUARIO,NOMBRE,APELLIDO,USERNAME,CLAVE,PERMISOS,ESTADO,"
-                    + "REGISTRADO_POR FROM USUARIOS");
-            ResultSet rs = pst.executeQuery();
-            ResultSetMetaData rsmd = rs.getMetaData();
-            columnas = rsmd.getColumnCount();
-                    
-            while(rs.next()){
-                /* creamos un arreglol de tipo objeto que se llame fila para */
-                Object[] fila = new Object[columnas];
-                for(int indice = 0; indice < columnas; indice ++){
-                    //a continuacion llenamos nuestro objeto
-                    fila[indice] = rs.getObject(indice +1);  
-                
-                }
-                modeloTabla.addRow(fila);  
-            }
-        }catch(Exception err){
-            JOptionPane.showMessageDialog(null,"Error al cargar datos contacte al administrador");
-        }
-    }
+   
 }

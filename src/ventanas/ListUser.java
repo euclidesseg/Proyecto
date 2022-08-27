@@ -176,15 +176,17 @@ public class ListUser extends javax.swing.JFrame {
                 }
                 modeloTabla.addRow(fila);  
             }
+            /* desde aqui le creamos el evento a la tabla para que me lleve hasta la interfaz donde podremos actualizar los datos del usuario*/
             jtable_usuarios.addMouseListener(new MouseAdapter() {
  
             @Override
             public void mouseClicked(MouseEvent e) {
-               int filaPoint = jtable_usuarios.rowAtPoint(e.getPoint());//indica la fila que seleccionamos de la tabla para que 
-               int columnPoint = 2;
+               int filaPoint = jtable_usuarios.rowAtPoint(e.getPoint());//e.getPint Obtiene la fila que se selecciono 
+               int columnPoint = 4;//indicamos la columna que vamos a selecconar
                
                 if (filaPoint > -1) {
                     userUpdate = (String)modeloTabla.getValueAt(filaPoint,columnPoint);
+                    /* en el campo userUpdate guardamos lo que esta tanto en la fila como en la columna seleeccionada*/
                     DatosUsuario datos = new DatosUsuario();
                     datos.setVisible(true);  
                 }
@@ -193,7 +195,5 @@ public class ListUser extends javax.swing.JFrame {
         }catch(Exception err){
             JOptionPane.showMessageDialog(null,"Error al cargar la tabla contacte al Administrador");
         }
-        
-       
     }
 }

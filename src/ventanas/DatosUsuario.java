@@ -7,6 +7,7 @@ package ventanas;
 
 import conectarSQL.Conexion;
 import java.awt.Image;
+import java.awt.Toolkit;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.WindowConstants;
@@ -15,11 +16,13 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 
 public class DatosUsuario extends javax.swing.JFrame {
-
+    String nombre = "", userUpdate = "";
+            int id;
 
     public DatosUsuario() {
+        nombre = Login.nombreUsuario;
         initComponents();
-        this.setTitle("Datos del usuario");
+        this.setTitle("Datos del usuario " + nombre);
         this.setLocationRelativeTo(null);
          this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -28,6 +31,12 @@ public class DatosUsuario extends javax.swing.JFrame {
         Icon fondo = new ImageIcon(fondoInterfaz.getImage().getScaledInstance(lbl_wallpaper.getWidth(),
                 lbl_wallpaper.getHeight(), Image.SCALE_DEFAULT));
         lbl_wallpaper.setIcon(fondo);
+    }
+    
+    @Override
+    public Image getIconImage() {
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/Administrador.png"));
+        return retValue;
     }
 
     @SuppressWarnings("unchecked")
@@ -61,7 +70,7 @@ public class DatosUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(51, 204, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Datos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 16))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(41, 43, 45)), "Datos de " + userUpdate, javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial", 1, 16))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txt_nombre2.setBackground(new java.awt.Color(153, 204, 255));

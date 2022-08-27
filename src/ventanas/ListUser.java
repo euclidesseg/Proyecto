@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ventanas;
 
 import conectarSQL.Conexion;
@@ -18,22 +14,16 @@ import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author eucli
- */
 public class ListUser extends javax.swing.JFrame {
     public static String userUpdate = "";
     String nombre = Login.nombreUsuario;
-    /**
-     * Creates new form ListUser
-     */
+    
     public ListUser() {
         initComponents();
         this.cargarTabla();
         this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        this.setTitle("Lista de usuarios sesión de " + nombre);
+        this.setTitle("Lista de usuarios sesión de " + userUpdate);
         
         ImageIcon fondoInterfaz = new ImageIcon("src/imagenes/wallpaper1.jpg");
         Icon fondo = new ImageIcon(fondoInterfaz.getImage().getScaledInstance(lbl_wallpaper.getWidth(),
@@ -91,6 +81,11 @@ public class ListUser extends javax.swing.JFrame {
         });
         jtable_usuarios.setGridColor(new java.awt.Color(0, 51, 255));
         jtable_usuarios.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        jtable_usuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtable_usuariosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtable_usuarios);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 980, 330));
@@ -103,6 +98,20 @@ public class ListUser extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    
+    /*este metodo contien el evento que me permite obtener los datos del registro seleccionado*/
+    private void jtable_usuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtable_usuariosMouseClicked
+        try{
+            int fila = jtable_usuarios.getSelectedRow();//tomaremos la fila seleccionada y guardaremos su indice en el campo fila
+            userUpdate = jtable_usuarios.getValueAt(fila,3).toString();
+            
+            /* obtenermos el id que se encuentra en la columna 0 de la fila seleccionada*/
+            DatosUsuario datosusuario = new DatosUsuario();
+            datosusuario.setVisible(true);
+        }catch(Exception err){
+            JOptionPane.showMessageDialog(null, "Error al obtener los datos contacte al administrador" );
+        }
+    }//GEN-LAST:event_jtable_usuariosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -177,23 +186,9 @@ public class ListUser extends javax.swing.JFrame {
                 modeloTabla.addRow(fila);  
             }
             /* desde aqui le creamos el evento a la tabla para que me lleve hasta la interfaz donde podremos actualizar los datos del usuario*/
-            jtable_usuarios.addMouseListener(new MouseAdapter() {
- 
-            @Override
-            public void mouseClicked(MouseEvent e) {
-               int filaPoint = jtable_usuarios.rowAtPoint(e.getPoint());//e.getPint Obtiene la fila que se selecciono 
-               int columnPoint = 4;//indicamos la columna que vamos a selecconar
-               
-                if (filaPoint > -1) {
-                    userUpdate = (String)modeloTabla.getValueAt(filaPoint,columnPoint);
-                    /* en el campo userUpdate guardamos lo que esta tanto en la fila como en la columna seleeccionada*/
-                    DatosUsuario datos = new DatosUsuario();
-                    datos.setVisible(true);  
-                }
-            }
-            });
         }catch(Exception err){
             JOptionPane.showMessageDialog(null,"Error al cargar la tabla contacte al Administrador");
         }
     }
 }
+/*Actualizacion*/

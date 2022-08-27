@@ -347,4 +347,5 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_wallpaper;
     private javax.swing.JButton nuevo_usuario;
     // End of variables declaration//GEN-END:variables
+
 }

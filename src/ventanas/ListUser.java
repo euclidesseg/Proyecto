@@ -7,10 +7,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import java.awt. event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 
@@ -44,6 +41,7 @@ public class ListUser extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtable_usuarios = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        btn_actualizar = new javax.swing.JButton();
         lbl_wallpaper = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -94,6 +92,18 @@ public class ListUser extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(153, 255, 255));
         jLabel1.setText("Usuarios Registrados");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 6, 170, 30));
+
+        btn_actualizar.setBackground(new java.awt.Color(255, 255, 255));
+        btn_actualizar.setFont(new java.awt.Font("Ebrima", 1, 16)); // NOI18N
+        btn_actualizar.setForeground(new java.awt.Color(0, 0, 0));
+        btn_actualizar.setText("REFRESCAR");
+        btn_actualizar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_actualizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 100, 30));
         getContentPane().add(lbl_wallpaper, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 420));
 
         pack();
@@ -112,6 +122,10 @@ public class ListUser extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error al obtener los datos contacte al administrador" );
         }
     }//GEN-LAST:event_jtable_usuariosMouseClicked
+
+    private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
+       cargarTabla();
+    }//GEN-LAST:event_btn_actualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,6 +163,7 @@ public class ListUser extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_actualizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtable_usuarios;

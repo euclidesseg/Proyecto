@@ -227,9 +227,8 @@ public class RegisterUser extends javax.swing.JFrame {
                                 pst3.executeUpdate();
                                 JOptionPane.showMessageDialog(null,"Registro Exitoso");
                                 cleanText();
-                                
                             } catch (SQLException err) {
-                                JOptionPane.showMessageDialog(null, "Error al crear este ususario, contacte al administrador");
+                                JOptionPane.showMessageDialog(null, "Error al crear este ususario, contacte al Administrador");
                             }
                         }else{
                             JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios");

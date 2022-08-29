@@ -111,7 +111,7 @@ public class DatosUsuario extends javax.swing.JFrame {
         lbl_apellido.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         lbl_apellido.setForeground(new java.awt.Color(0, 0, 0));
         lbl_apellido.setText("Nombre");
-        jPanel1.add(lbl_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 60, -1));
+        jPanel1.add(lbl_apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 80, -1));
 
         txt_nombre.setBackground(new java.awt.Color(153, 204, 255));
         txt_nombre.setFont(new java.awt.Font("Dialog", 1, 13)); // NOI18N

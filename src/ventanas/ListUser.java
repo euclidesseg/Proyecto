@@ -20,7 +20,7 @@ public class ListUser extends javax.swing.JFrame {
         this.cargarTabla();
         this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        this.setTitle("Lista de usuarios sesión de " + userUpdate);
+        this.setTitle("Lista de usuarios sesión de " + nombre);
         
         ImageIcon fondoInterfaz = new ImageIcon("src/imagenes/wallpaper1.jpg");
         Icon fondo = new ImageIcon(fondoInterfaz.getImage().getScaledInstance(lbl_wallpaper.getWidth(),

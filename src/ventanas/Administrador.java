@@ -146,6 +146,11 @@ public class Administrador extends javax.swing.JFrame {
         getContentPane().add(lbl_nombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 380, 30));
 
         btn_asistencia.setBackground(new java.awt.Color(0, 0, 0));
+        btn_asistencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_asistenciaActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_asistencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 90, 140, 100));
 
         btn_graficas.setBackground(new java.awt.Color(0, 0, 0));
@@ -196,7 +201,7 @@ public class Administrador extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Asistensia");
+        jLabel1.setText("Asistencia");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 200, 90, 20));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -263,7 +268,8 @@ public class Administrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nuevo_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevo_usuarioActionPerformed
-        new RegisterUser().setVisible(true);
+        RegisterUser nuevoUsuario = new RegisterUser();
+        nuevoUsuario.setVisible(true);
     }//GEN-LAST:event_nuevo_usuarioActionPerformed
 
     private void btn_GestionAsistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GestionAsistenciaActionPerformed
@@ -286,6 +292,11 @@ public class Administrador extends javax.swing.JFrame {
         ListUser listUser = new ListUser();
         listUser.setVisible(true);
     }//GEN-LAST:event_btn_gestionUsuariosActionPerformed
+
+    private void btn_asistenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_asistenciaActionPerformed
+        Asistencia asistencia = new Asistencia();
+        asistencia.setVisible(true);
+    }//GEN-LAST:event_btn_asistenciaActionPerformed
 
     /**
      * @param args the command line arguments
